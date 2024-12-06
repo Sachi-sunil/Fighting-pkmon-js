@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Pokémon Battle Game</title>
+    <style>
+        body {
+            background-color: #f0f8ff;
+            color: #333;
+        }
+        .pokemon-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .pokemon {
+            text-align: center;
+            border: 2px solid #007bff;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .pokemon:hover {
+            transform: scale(1.05);
+        }
+        .battle-log {
+            height: 200px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: white;
+        }
+        .progress {
+            height: 20px;
+            margin: 10px 0;
+        }
+        .knocked-out {
+            filter: grayscale(100%);
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pokémon Battle Game</h1>
+        <div class="pokemon-container">
+            <div class="pokemon" id="player1">
+                <h2>Pikachu</h2>
+                <img id="pikachu-img" src="images/pikachu.png" alt="Pikachu" style="width: 150px;">
+                <div class="progress">
+                    <div id="player-health" class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                </div>
+                <button class="btn btn-primary" onclick="attack('player', 'quickAttack')">Quick Attack</button>
+                <button class="btn btn-primary" onclick="attack('player', 'thunderbolt')">Thunderbolt</button>
+                <button class="btn btn-primary" onclick="attack('player', 'ironTail')">Iron Tail</button>
+                <button class="btn btn-success" onclick="heal('player')">Heal</button>
+            </div>
+            <div class="pokemon" id="player2">
+                <h2>Charmander</h2>
+                <img id="charmander-img" src="images/charmander.png" alt="Charmander" style="width: 150px;">
+                <div class="progress">
+                    <div id="opponent-health" class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                </div>
+                <button class="btn btn-primary" onclick="attack('opponent', 'scratch')">Scratch</button>
+                <button class="btn btn-primary" onclick="attack('opponent', 'flamethrower')">Flamethrower</button>
+                <button class="btn btn-primary" onclick="attack('opponent', 'ember')">Ember</button>
+                <button class="btn btn-success" onclick="heal('opponent')">Heal</button>
+            </div>
+        </div>
+        <div class="battle-log" id="battle-log"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
